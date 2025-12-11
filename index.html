@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>وكالة نور المنتظر - أرقام الباصات</title>
+  <title>وكالة نور المنتظر - نظام رقم الباص</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
@@ -23,50 +23,50 @@
 
     .card {
       background: #ffffff;
-      padding: 24px 20px 28px;
+      padding: 26px 22px 28px;
       width: 100%;
-      max-width: 420px;
-      border-radius: 18px;
-      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.15);
+      max-width: 460px;
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
     }
 
     .card-header {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .title {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 800;
       margin: 0 0 6px;
       color: #111827;
     }
 
     .subtitle {
       margin: 0;
-      font-size: 13px;
+      font-size: 14px;
       color: #6b7280;
     }
 
+    .field {
+      margin-bottom: 16px;
+    }
+
     .field-label {
-      font-size: 13px;
+      font-size: 14px;
       margin-bottom: 4px;
       color: #374151;
     }
 
-    .field {
-      margin-bottom: 14px;
-    }
-
     input {
       width: 100%;
-      padding: 10px 12px;
-      border-radius: 10px;
+      padding: 11px 13px;
+      border-radius: 12px;
       border: 1px solid #d1d5db;
-      font-size: 14px;
+      font-size: 15px;
       outline: none;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
       direction: rtl;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
     input::placeholder {
@@ -76,13 +76,7 @@
 
     input:focus {
       border-color: #0284c7;
-      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.3);
-    }
-
-    .hint {
-      font-size: 11px;
-      color: #9ca3af;
-      margin-top: 2px;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.35);
     }
 
     .btn {
@@ -99,13 +93,13 @@
     .btn-primary {
       background: #059669;
       color: white;
-      box-shadow: 0 8px 18px rgba(5, 150, 105, 0.35);
+      box-shadow: 0 10px 22px rgba(5, 150, 105, 0.35);
       margin-top: 4px;
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(5, 150, 105, 0.4);
+      box-shadow: 0 12px 26px rgba(5, 150, 105, 0.45);
     }
 
     .btn-secondary {
@@ -120,9 +114,19 @@
       background: #dcfce7;
     }
 
+    .btn-ghost {
+      margin-top: 8px;
+      background: transparent;
+      border: none;
+      color: #6b7280;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
     .footer-note {
-      margin-top: 12px;
-      font-size: 11px;
+      margin-top: 14px;
+      font-size: 12px;
       color: #9ca3af;
       text-align: center;
     }
@@ -132,117 +136,75 @@
       color: #16a34a;
     }
 
-    /* ========== Modal (سجل الإرسال) ========== */
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 50;
+    /* سجل الإرسال داخل نفس الصفحة */
+    .history-card {
+      margin-top: 18px;
+      padding: 14px 12px;
+      border-radius: 14px;
+      background: rgba(249, 250, 251, 0.96);
+      border: 1px solid #e5e7eb;
     }
 
-    .modal.open {
-      display: flex;
-    }
-
-    .modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.35);
-    }
-
-    .modal-content {
-      position: relative;
-      background: #ffffff;
-      width: min(480px, 100% - 32px);
-      max-height: 80vh;
-      border-radius: 18px;
-      padding: 16px 16px 14px;
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.4);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .modal-header {
+    .history-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .modal-title {
-      font-size: 15px;
+    .history-title {
+      font-size: 14px;
       font-weight: 700;
       color: #111827;
     }
 
-    .modal-close {
-      border: none;
-      background: #f3f4f6;
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      font-size: 16px;
-      cursor: pointer;
+    .history-actions {
       display: flex;
+      gap: 6px;
       align-items: center;
-      justify-content: center;
-      color: #6b7280;
     }
 
-    .modal-close:hover {
-      background: #e5e7eb;
-    }
-
-    .modal-toolbar {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .search-input {
-      flex: 1;
+    .history-search {
+      width: 160px;
+      max-width: 50vw;
       border-radius: 999px;
       border: 1px solid #d1d5db;
-      padding: 7px 12px;
-      font-size: 13px;
+      padding: 6px 10px;
+      font-size: 12px;
       outline: none;
     }
 
-    .search-input::placeholder {
-      font-size: 12px;
+    .history-search::placeholder {
+      font-size: 11px;
       color: #9ca3af;
     }
 
-    .clear-btn {
+    .history-clear {
       border-radius: 999px;
       border: none;
-      padding: 7px 10px;
-      font-size: 12px;
+      padding: 6px 9px;
+      font-size: 11px;
       background: #fef2f2;
       color: #b91c1c;
       cursor: pointer;
       white-space: nowrap;
     }
 
-    .clear-btn:hover {
+    .history-clear:hover {
       background: #fee2e2;
     }
 
-    .modal-body {
-      flex: 1;
+    .history-list {
+      max-height: 220px;
       overflow-y: auto;
-      padding: 2px 1px 4px;
+      padding-top: 4px;
     }
 
     .history-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 9px;
+      padding: 7px 8px;
       border-radius: 10px;
       background: #f9fafb;
       margin-bottom: 6px;
@@ -257,7 +219,7 @@
     }
 
     .history-bus {
-      padding: 2px 7px;
+      padding: 2px 8px;
       border-radius: 999px;
       background: #e0f2fe;
       color: #0369a1;
@@ -292,12 +254,12 @@
       text-align: center;
       font-size: 12px;
       color: #9ca3af;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     @media (max-width: 480px) {
       .card {
-        margin: 16px;
+        margin: 18px;
       }
     }
   </style>
@@ -312,53 +274,48 @@
 
     <div class="field">
       <div class="field-label">اسم الزائر:</div>
-      <input id="visitorName" type="text" placeholder="مثال: جعفر علي">
+      <input id="visitorName" type="text" placeholder="أدخل اسم الزائر">
     </div>
 
     <div class="field">
       <div class="field-label">رقم الجوال:</div>
-      <input id="phoneNumber" type="text" placeholder="05XXXXXXXX أو 9665XXXXXXXX">
-      <div class="hint">يقبل ٠٥ / 5 / 966 / +966 / 00966 وبالأرقام العربية أو الإنجليزية.</div>
+      <input id="phoneNumber" type="text" placeholder="أدخل رقم الجوال">
     </div>
 
     <div class="field">
       <div class="field-label">رقم الباص:</div>
-      <input id="busNumber" type="text" placeholder="مثال: 1">
+      <input id="busNumber" type="text" placeholder="أدخل رقم الباص">
     </div>
 
     <button class="btn btn-primary" onclick="sendWhatsApp()">إرسال</button>
-    <button class="btn btn-secondary" onclick="openHistory()">سجل الإرسال</button>
+    <button class="btn btn-secondary" onclick="toggleHistory()">سجل الإرسال</button>
+    <button class="btn-ghost" onclick="clearForm()">مسح الحقول ✕</button>
 
     <div class="footer-note">
-      مُطور خصيصًا لحملات الزوار – <span>MenuLink</span> 📲
+      مطور بواسطة <span>MenuLink</span> 📲
     </div>
-  </div>
 
-  <!-- نافذة السجل -->
-  <div id="historyModal" class="modal">
-    <div class="modal-backdrop" onclick="closeHistory()"></div>
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-title">سجل الإرسال</div>
-        <button class="modal-close" onclick="closeHistory()">✕</button>
+    <!-- سجل الإرسال (يظهر/يختفي من نفس الصفحة) -->
+    <div id="historySection" class="history-card" style="display:none;">
+      <div class="history-header">
+        <div class="history-title">سجل الإرسال</div>
+        <div class="history-actions">
+          <input
+            id="historySearch"
+            class="history-search"
+            type="text"
+            placeholder="بحث بالاسم / الجوال / الباص"
+            oninput="searchHistory(this)"
+          >
+          <button class="history-clear" onclick="clearHistory()">حذف الكل</button>
+        </div>
       </div>
-
-      <div class="modal-toolbar">
-        <input
-          type="text"
-          class="search-input"
-          placeholder="بحث باسم الزائر، رقم الجوال، أو رقم الباص..."
-          oninput="searchHistory(this)"
-        >
-        <button class="clear-btn" onclick="clearHistory()">حذف السجل كاملًا</button>
-      </div>
-
-      <div id="historyList" class="modal-body"></div>
+      <div id="historyList" class="history-list"></div>
     </div>
   </div>
 
   <script>
-    // تحويل كل الأرقام العربية/الفارسية → إنجليزية + حذف الرموز والمسافات
+    // تحويل الأرقام العربية/الفارسية إلى أرقام إنجليزية
     function normalizeDigits(str) {
       if (!str) return '';
       const arabic = '٠١٢٣٤٥٦٧٨٩';
@@ -376,36 +333,32 @@
           out += ch;
           continue;
         }
-
-        // نتجاهل أي رمز آخر (+ - مسافة ...)
+        // نتجاهل الرموز مثل + - مسافة
       }
       return out;
     }
 
-    // ترتيب رقم الجوال إلى صيغة سعودية موحدة 9665XXXXXXXX
+    // ضبط رقم الجوال إلى صيغة سعودية 9665XXXXXXXX
     function formatSaudiPhone(raw) {
       let digits = normalizeDigits(raw);
-
       if (!digits) return null;
 
-      // شيل 00 من البداية لو موجودة
       if (digits.startsWith('00')) digits = digits.slice(2);
-
-      // شيل 966 لو موجودة
       if (digits.startsWith('966')) digits = digits.slice(3);
-
-      // لو مكتوبة 05XXXXXXXX نخليها 5XXXXXXXX
       if (digits.startsWith('05')) digits = digits.slice(1);
 
-      // الآن لازم تبدأ بـ 5 وطولها 9 أرقام (5 + 8)
       if (!digits.startsWith('5') || digits.length !== 9) {
         return null;
       }
-
-      return '966' + digits; // مثال: 9665XXXXXXXX
+      return '966' + digits;
     }
 
-    // إرسال الواتساب + حفظ في السجل
+    function clearForm() {
+      document.getElementById('visitorName').value = '';
+      document.getElementById('phoneNumber').value = '';
+      document.getElementById('busNumber').value = '';
+    }
+
     function sendWhatsApp() {
       const nameInput  = document.getElementById('visitorName');
       const phoneInput = document.getElementById('phoneNumber');
@@ -441,27 +394,21 @@
       const url = `https://wa.me/${phoneForWa}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
 
-      // نحفظ في السجل
+      // حفظ في السجل
       saveToHistory({ name, phone: phoneForWa, bus });
 
-      // نفرّغ الحقول بعد الإرسال
-      nameInput.value = '';
-      phoneInput.value = '';
-      busInput.value = '';
+      // تفريغ الحقول
+      clearForm();
     }
 
-    /* ===================== السجل (localStorage) ===================== */
+    /* ====== السجل (LocalStorage) ====== */
 
     const HISTORY_KEY = 'noor-almontathar-history';
 
     function loadHistory() {
       const json = localStorage.getItem(HISTORY_KEY);
       if (!json) return [];
-      try {
-        return JSON.parse(json);
-      } catch {
-        return [];
-      }
+      try { return JSON.parse(json); } catch { return []; }
     }
 
     function saveHistory(list) {
@@ -546,27 +493,20 @@
       });
     }
 
-    // فتح / إغلاق نافذة السجل
-    function openHistory() {
-      const modal = document.getElementById('historyModal');
-      if (!modal) return;
-      modal.classList.add('open');
-      renderHistory();
+    function toggleHistory() {
+      const section = document.getElementById('historySection');
+      if (!section) return;
+      const isHidden = section.style.display === 'none' || section.style.display === '';
+      section.style.display = isHidden ? 'block' : 'none';
+      if (isHidden) renderHistory(document.getElementById('historySearch')?.value || '');
     }
 
-    function closeHistory() {
-      const modal = document.getElementById('historyModal');
-      if (!modal) return;
-      modal.classList.remove('open');
-    }
-
-    // بحث داخل السجل
     function searchHistory(input) {
       renderHistory(input.value);
     }
 
-    // نجهز السجل أول ما تفتح الصفحة
     document.addEventListener('DOMContentLoaded', () => {
+      // تجهيز السجل لو حاب تطلع عليه مباشرة
       renderHistory();
     });
   </script>

@@ -1,115 +1,399 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>وكالة نور المنتظر - إرسال معلومات الباص</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>وكالة نور المنتظر - إرسال رقم الباص</title>
 
-  <style>
-    body {
-      font-family: "Tajawal", sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #f2f4f7;
+  font-family: "Tajawal", sans-serif;
+}
 
-    .container {
-      background: white;
-      padding: 25px;
-      width: 90%;
-      max-width: 450px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+.container {
+  width: 90%;
+  max-width: 430px;
+  margin: 35px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #0001;
+}
 
-    h2 {
-      margin-bottom: 20px;
-      color: #2b2b2b;
-      font-size: 24px;
-    }
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: #333;
+}
 
-    label {
-      font-size: 16px;
-      font-weight: bold;
-      display: block;
-      text-align: right;
-      margin-top: 10px;
-    }
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 25px;
+  color: #666;
+}
 
-    input, select {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-      margin-top: 5px;
-    }
+.form-group {
+  margin-bottom: 18px;
+}
 
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      background: #007bff;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+label {
+  font-size: 15px;
+  color: #444;
+}
 
-    button:hover {
-      background: #005fcc;
-    }
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
 
-  </style>
+.hint {
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+}
+
+/* الأزرار */
+.main-btn {
+  width: 100%;
+  padding: 15px;
+  background: #00a884;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.main-btn:hover {
+  background: #009873;
+}
+
+.clear-btn {
+  width: 100%;
+  padding: 14px;
+  background: #d9534f;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.clear-btn:hover {
+  background: #c64541;
+}
+
+.divider {
+  margin: 25px 0 15px;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* السجل */
+.log-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.log-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.log-search {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+}
+
+.log-list {
+  max-height: 260px;
+  overflow-y: auto;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 8px;
+  background: #fafafa;
+}
+
+.log-empty {
+  text-align: center;
+  font-size: 13px;
+  color: #999;
+  padding: 10px 0;
+}
+
+.log-item {
+  background: white;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+
+.log-item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.log-item-body {
+  display: flex;
+  justify-content: space-between;
+  color: #4b5563;
+  margin-bottom: 2px;
+}
+
+.log-item-time {
+  font-size: 11px;
+  color: #9ca3af;
+  text-align: left;
+}
+
+/* صندوق مسح السجل */
+.delete-log-box {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.clear-log-btn {
+  background: #b00020;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  width: 90%;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.clear-log-btn:hover {
+  background: #d32f2f;
+}
+
+.clear-warning {
+  font-size: 11px;
+  color: #777;
+  margin-top: 4px;
+}
+</style>
 </head>
 
 <body>
+<div class="container">
 
-  <div class="container">
-    <h2>وكالة نور المنتظر</h2>
+  <h1 class="title">وكالة نور المنتظر</h1>
+  <p class="subtitle">نظام إرسال رقم الباص للزوار</p>
 
-    <label>اسم الزائر</label>
-    <input type="text" id="visitorName" placeholder="مثال: حسين علي">
-
-    <label>رقم الجوال</label>
-    <input type="tel" id="phone" placeholder="05XXXXXXXX">
-
-    <label>رقم الباص</label>
-    <input type="number" id="busNumber" placeholder="مثال: 3">
-
-    <button onclick="sendWhatsApp()">إرسال رسالة الباص</button>
+  <div class="form-group">
+    <label>اسم الزائر:</label>
+    <input type="text" id="name" placeholder="مثال: جعفر علي" />
   </div>
 
-<script>
-function sendWhatsApp() {
-  let name = document.getElementById("visitorName").value.trim();
-  let phone = document.getElementById("phone").value.trim();
-  let bus = document.getElementById("busNumber").value.trim();
+  <div class="form-group">
+    <label>رقم الباص:</label>
+    <input type="number" id="bus" placeholder="مثال: 1" />
+  </div>
 
-  if (!name || !phone || !bus) {
-    alert("الرجاء تعبئة جميع الخانات");
+  <div class="form-group">
+    <label>رقم جوال الزائر:</label>
+    <input type="tel" id="phone" placeholder="05xxxxxxxx" />
+    <div class="hint">أدخل رقم سعودي يبدأ بـ 05…</div>
+  </div>
+
+  <button id="sendBtn" class="main-btn">إرسال</button>
+  <button id="clearBtn" class="clear-btn">حذف البيانات من النموذج</button>
+
+  <hr class="divider" />
+
+  <div class="log-header">
+    <span class="log-title">سجل الإرسال</span>
+    <input id="logSearch" class="log-search" placeholder="بحث باسم الزائر..." />
+  </div>
+
+  <div id="logList" class="log-list"></div>
+
+  <div class="delete-log-box">
+    <button id="clearLogBtn" class="clear-log-btn">🗑️ مسح السجل بالكامل</button>
+    <p class="clear-warning">⚠️ سيتم حذف جميع السجلات من هذا الجهاز</p>
+  </div>
+
+</div>
+
+<script>
+// ============= إعداد التخزين المحلي =============
+const LOG_KEY = "noor_buses_log";
+
+function loadLog() {
+  try {
+    const raw = localStorage.getItem(LOG_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveLog(data) {
+  localStorage.setItem(LOG_KEY, JSON.stringify(data));
+}
+
+function addLog(entry) {
+  const log = loadLog();
+  log.unshift(entry); // الأحدث أول واحد
+  saveLog(log);
+  renderLog();
+}
+
+// ============= عناصر الصفحة =============
+const nameInput   = document.getElementById("name");
+const busInput    = document.getElementById("bus");
+const phoneInput  = document.getElementById("phone");
+const sendBtn     = document.getElementById("sendBtn");
+const clearBtn    = document.getElementById("clearBtn");
+const logSearch   = document.getElementById("logSearch");
+const logList     = document.getElementById("logList");
+const clearLogBtn = document.getElementById("clearLogBtn");
+
+// ============= تنسيق رقم الجوال =============
+function normalizePhone(phone) {
+  let p = phone.trim().replace(/\s|-|_/g, "");
+
+  if (p.startsWith("+966")) {
+    p = "0" + p.slice(4);
+  } else if (p.startsWith("966")) {
+    p = "0" + p.slice(3);
+  }
+
+  if (!p.startsWith("05")) return null;
+
+  return "966" + p.slice(1); // 9665xxxxxxx
+}
+
+// ============= إرسال واتساب =============
+sendBtn.addEventListener("click", () => {
+  const name  = nameInput.value.trim();
+  const bus   = busInput.value.trim();
+  const phone = phoneInput.value.trim();
+
+  if (!name || !bus || !phone) {
+    alert("الرجاء تعبئة اسم الزائر، رقم الباص، ورقم الجوال.");
     return;
   }
 
-  let msg = 
-`السلام عليكم ورحمة الله وبركاته 🌹
+  const intl = normalizePhone(phone);
+  if (!intl) {
+    alert("تأكد من كتابة رقم سعودي صحيح يبدأ بـ 05.");
+    return;
+  }
+
+  const msg = `
+السلام عليكم ورحمة الله وبركاته 🌹
 
 👤 الاسم: ${name}
 🚌 رقم الباص: ${bus}
 
-نتمنى لكم رحلة موفقة مع *وكالة نور المنتظر*`;
+نتمنى لكم رحلة موفقة مع *وكالة نور المنتظر*
 
-  let url = `https://wa.me/966${phone.substring(1)}?text=${encodeURIComponent(msg)}`;
-  
-  window.open(url, "_blank");
+📲 خدمة MenuLink
+  `;
+
+  const waUrl = `https://wa.me/${intl}?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl, "_blank");
+
+  const now = new Date().toLocaleString("ar-SA", {
+    dateStyle: "short",
+    timeStyle: "short"
+  });
+
+  addLog({ name, bus, phone, time: now });
+
+  clearForm();
+});
+
+// ============= تنظيف النموذج فقط =============
+function clearForm() {
+  nameInput.value = "";
+  busInput.value = "";
+  phoneInput.value = "";
+  nameInput.focus();
 }
+
+clearBtn.addEventListener("click", clearForm);
+
+// ============= رسم السجل + البحث =============
+function renderLog() {
+  const log = loadLog();
+  const q = logSearch.value.trim().toLowerCase();
+
+  const filtered = q
+    ? log.filter(e => (e.name || "").toLowerCase().includes(q))
+    : log;
+
+  logList.innerHTML = "";
+
+  if (!filtered.length) {
+    logList.innerHTML = `<div class="log-empty">لا يوجد سجلات حالياً.</div>`;
+    return;
+  }
+
+  filtered.forEach(e => {
+    const row = document.createElement("div");
+    row.className = "log-item";
+
+    const header = document.createElement("div");
+    header.className = "log-item-header";
+    header.innerHTML = `<span>${e.name}</span><span>باص ${e.bus}</span>`;
+
+    const body = document.createElement("div");
+    body.className = "log-item-body";
+    body.innerHTML = `<span>جوال: ${e.phone}</span>`;
+
+    const time = document.createElement("div");
+    time.className = "log-item-time";
+    time.textContent = e.time || "";
+
+    row.appendChild(header);
+    row.appendChild(body);
+    row.appendChild(time);
+
+    logList.appendChild(row);
+  });
+}
+
+logSearch.addEventListener("input", renderLog);
+
+// ============= مسح السجل بالكامل =============
+clearLogBtn.addEventListener("click", () => {
+  const ok = confirm("متأكد تبي تحذف السجل كامل من هذا الجهاز؟");
+  if (!ok) return;
+
+  saveLog([]);
+  renderLog();
+  alert("تم حذف السجل بالكامل ✔️");
+});
+
+// أول تحميل للسجل عند فتح الصفحة
+renderLog();
 </script>
 
 </body>

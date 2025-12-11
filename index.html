@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>وكالة نور المنتظر - إرسال معلومات الباص</title>
+
+  <style>
+    body {
+      font-family: "Tajawal", sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 25px;
+      width: 90%;
+      max-width: 450px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #2b2b2b;
+      font-size: 24px;
+    }
+
+    label {
+      font-size: 16px;
+      font-weight: bold;
+      display: block;
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #007bff;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #005fcc;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>وكالة نور المنتظر</h2>
+
+    <label>اسم الزائر</label>
+    <input type="text" id="visitorName" placeholder="مثال: حسين علي">
+
+    <label>رقم الجوال</label>
+    <input type="tel" id="phone" placeholder="05XXXXXXXX">
+
+    <label>رقم الباص</label>
+    <input type="number" id="busNumber" placeholder="مثال: 3">
+
+    <button onclick="sendWhatsApp()">إرسال رسالة الباص</button>
+  </div>
+
+<script>
+function sendWhatsApp() {
+  let name = document.getElementById("visitorName").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  let bus = document.getElementById("busNumber").value.trim();
+
+  if (!name || !phone || !bus) {
+    alert("الرجاء تعبئة جميع الخانات");
+    return;
+  }
+
+  let msg = 
+`السلام عليكم ورحمة الله وبركاته 🌹
+
+👤 الاسم: ${name}
+🚌 رقم الباص: ${bus}
+
+نتمنى لكم رحلة موفقة مع *وكالة نور المنتظر*`;
+
+  let url = `https://wa.me/966${phone.substring(1)}?text=${encodeURIComponent(msg)}`;
+  
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
